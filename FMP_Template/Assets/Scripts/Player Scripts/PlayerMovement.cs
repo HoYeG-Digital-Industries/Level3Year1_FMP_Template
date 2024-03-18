@@ -21,23 +21,22 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    
     void FixedUpdate()
     {
         Move();
     }
 
     void LateUpdate(){
-        clone.transform.LookAt(mainCamera.transform);
-        clone.transform.Rotate(0, 0, 0);
+        if(spriteUsed == true){
+            clone.transform.LookAt(mainCamera.transform);
+            clone.transform.Rotate(0, 0, 0);
+        }
     }
 
     void Move(){
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
-
         moveDirection = (moveHorizontal * transform.right + moveVertical * transform.forward);
-
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7984474681644326076}
   - component: {fileID: 341191939560562484}
   - component: {fileID: 381893572038777380}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: REPLACEBULLET
   m_TagString: Untagged
   m_Icon: {fileID: 0}

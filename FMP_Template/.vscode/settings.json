@@ -52,5 +52,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "dotnet.defaultSolution": "FMP_Template.sln"
+    "dotnet.defaultSolution": "FMP_Template.sln",
+    "dotnet.preferCSharpExtension": true
 }

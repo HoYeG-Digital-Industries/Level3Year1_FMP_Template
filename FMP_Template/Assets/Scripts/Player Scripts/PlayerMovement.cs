@@ -10,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public bool spriteUsed;
     
     GameObject clone;
-    CharacterController controller;
+    Rigidbody rb;
     Vector3 moveDirection;
     Camera mainCamera;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         clone = Instantiate(playerPrefab, transform.position, Quaternion.identity, this.transform);
         mainCamera = Camera.main;
     }
@@ -37,6 +37,6 @@ public class PlayerMovement : MonoBehaviour
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
         moveDirection = (moveHorizontal * transform.right + moveVertical * transform.forward);
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.deltaTime);
     }
 }

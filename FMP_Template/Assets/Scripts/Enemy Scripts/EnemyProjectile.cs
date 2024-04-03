@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleBullet : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     Rigidbody rigidbody;
-    [Range(1, 20)] public float bulletSpeed;
-    public float bulletDamage;
-
+    [Range(1, 25)] public float bulletSpeed;
+    [Range(1, 50)] public float bulletDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +15,9 @@ public class SimpleBullet : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.tag == "BasicEnemy"){
-            other.transform.GetComponent<BasicEnemy>().TakeDamage(bulletDamage);
+        if(other.tag == "Player"){
+            other.transform.GetComponent<PlayerHealth>().TakeDamage(bulletDamage);
             Destroy(gameObject);
-        }
-        if(other.tag == "RangeEnemy"){
-            other.transform.GetComponent<RangeEnemy>().TakeDamage(bulletDamage);
         }
     }
 }

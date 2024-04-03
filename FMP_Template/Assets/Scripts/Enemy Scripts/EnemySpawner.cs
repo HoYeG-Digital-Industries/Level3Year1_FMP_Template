@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyOne;
+    public GameObject[] enemyPrefabs;
     [Range(1, 10)] public float spawnRate;
 
     int enemyCount;
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void Spawn(){
-        Instantiate(enemyOne, transform.position, Quaternion.identity);
+        Instantiate(enemyPrefabs[Random.Range(0, 2)], transform.position, Quaternion.identity);
         enemyCount++;
     }
     

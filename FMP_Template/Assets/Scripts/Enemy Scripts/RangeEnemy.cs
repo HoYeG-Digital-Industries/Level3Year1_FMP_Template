@@ -4,16 +4,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class BasicEnemy : MonoBehaviour
+public class RangeEnemy : MonoBehaviour
 {
     [Range(1, 100)]
     public float enemyHealth;
-    public float enemyDamage, attackRange;
+    public float attackRange, attackRate;
     public int ScoreAmount;
-    private Transform playerObject;
+    
+    public GameObject enemyProjectile;
+   
     private ScoreManager scoreManager;
+    private float attackDelay = 1f;
+    private Transform playerObject;
 
-    NavMeshAgent navAgent;
+    private NavMeshAgent navAgent;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +25,28 @@ public class BasicEnemy : MonoBehaviour
         playerObject = GameObject.FindWithTag("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
         scoreManager = GameObject.Find("UICanvas").GetComponent<ScoreManager>();
+        navAgent.stoppingDistance = attackRange;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.LookAt(playerObject);
         navAgent.destination = playerObject.position;
         if(Vector3.Distance(playerObject.position, transform.position) <= attackRange){
-            playerObject.GetComponent<PlayerHealth>().TakeDamage(enemyDamage);
-            Destroy(gameObject);
+            if(Time.time > attackDelay){
+                
+                Attack();
+            }
+            
         }
+    }
+
+    void Attack(){
+        GameObject clone = Instantiate(enemyProjectile, transform.position, transform.rotation);
+        Destroy(clone, 10f);
+        attackDelay = Time.time + attackRate;
+        
     }
 
     public void TakeDamage(float amount){

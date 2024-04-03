@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BasicEnemy : MonoBehaviour
 {
     [Range(1, 100)]
     public float enemyHealth;
     public float enemyDamage, enemySpeed, attackRange;
+    public int ScoreAmount;
     public Transform playerObject;
+    private ScoreManager scoreManager;
 
     NavMeshAgent navAgent;
 
@@ -17,6 +20,7 @@ public class BasicEnemy : MonoBehaviour
     {
         playerObject = GameObject.FindWithTag("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
+        scoreManager = GameObject.Find("UICanvas").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -32,6 +36,7 @@ public class BasicEnemy : MonoBehaviour
     public void TakeDamage(float amount){
         enemyHealth -= amount;
         if(enemyHealth <= 0f){
+            scoreManager.AddScore(ScoreAmount);
             Destroy(gameObject);
         }
     }

@@ -11,9 +11,20 @@ public class ScoreManager : MonoBehaviour
     private int baseScore;
 
 
-    public void AddScore(int score)
+    public void AddScore(int score) //Call this in order to add score 
     {
         baseScore += score;
+        UpdateScore();
+    }
+
+    public void SubtractScore(int score) //Call this in order to subtract score
+    {
+        baseScore -= score;
+        UpdateScore();
+    }
+
+    void UpdateScore() //Call this is order to update the UI
+    {
         ScoreContainer.text = "SCORE: " + baseScore;
     }
 

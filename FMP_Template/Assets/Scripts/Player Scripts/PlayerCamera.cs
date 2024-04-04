@@ -4,24 +4,37 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float moveSpeed;
-    public GameObject target;
+    [Header("Variables to Change")]
+    [Range(1, 20)] public float moveSpeed; //The speed in which the camera moves
+    
+    [Tooltip("This is the end point for the camera, use an empty game object for this!")]
+    public GameObject target; //The end point for the camera
+
+    [HideInInspector]
+    public GameObject colliderPrefab; //Collider prefabs to stop player from moving behind or too far infront. 
+    GameObject playerObject; //The player Object
+    Vector3 offset; //Vector to create offsets for colliders.
+
+    void Start()
+    {
+        playerObject = GameObject.FindWithTag("Player"); //find and assign player object through tag.
+        offset = new Vector3(0, 0, 20); //Creates an offset for the collider positions around the player
+        //These lines spawn in colliders and make them children of the camera. 
+        GameObject BKClone = Instantiate(colliderPrefab, playerObject.transform.position - offset, Quaternion.identity);
+        BKClone.transform.parent = this.transform;
+        GameObject FRClone = Instantiate(colliderPrefab, playerObject.transform.position + offset, Quaternion.identity);
+        FRClone.transform.parent = this.transform;
+    }
     void Update(){
         Move();
     }
 
     void Move(){
-        var step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        var step = moveSpeed * Time.deltaTime; //Creates a smooth move speed
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step); //Moves the camera towards the end point.
     }
 
-
-
-
-
-
-
-
+    //You can ignore this, just another way of doing moving camera. 
     #region oldVersion
     /*
     GameObject playerTarget;

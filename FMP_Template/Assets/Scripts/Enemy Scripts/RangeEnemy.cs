@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class RangeEnemy : MonoBehaviour
 {
-    [Range(1, 100)]
+
     public float enemyHealth;
     public float attackRange, attackRate;
     public int ScoreAmount;

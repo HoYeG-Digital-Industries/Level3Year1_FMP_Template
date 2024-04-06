@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class BasicEnemy : MonoBehaviour
 {
     [Header("Variables you can change")]
-    [Range(1, 100)]
+
     public float enemyHealth; //health of the enemy
     [Range(1, 50)] public float enemyDamage, attackRange;
     [Tooltip("Change the score of the enemy generates")] public int ScoreAmount;

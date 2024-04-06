@@ -13,7 +13,8 @@ public class PlayerCamera : MonoBehaviour
 	[Tooltip("This is where you set the prefab for the colliders that stop the player going to far back and forward")]
 	public GameObject colliderPrefab; //Collider prefabs to stop player from moving behind or too far infront. 
 	[Tooltip("This is the offset used by the colliders")]
-	public Vector3 offset; //Vector to create offsets for colliders.
+	public Vector3 frontOffset; //Vector to create offsets for colliders.
+	public Vector3 backOffset; //Vector to create offsets for colliders.
 	
 	[HideInInspector]
 	GameObject playerObject; //The player Object
@@ -23,9 +24,9 @@ public class PlayerCamera : MonoBehaviour
 		playerObject = GameObject.FindWithTag("Player"); //find and assign player object through tag.
 		//offset = new Vector3(0, 0, 20); //Creates an offset for the collider positions around the player
 		//These lines spawn in colliders and make them children of the camera. 
-		GameObject BKClone = Instantiate(colliderPrefab, playerObject.transform.position - offset, Quaternion.identity);
+		GameObject BKClone = Instantiate(colliderPrefab, playerObject.transform.position - backOffset, Quaternion.identity);
 		BKClone.transform.parent = this.transform;
-		GameObject FRClone = Instantiate(colliderPrefab, playerObject.transform.position + offset, Quaternion.identity);
+		GameObject FRClone = Instantiate(colliderPrefab, playerObject.transform.position + frontOffset, Quaternion.identity);
 		FRClone.transform.parent = this.transform;
 	}
 	void Update(){

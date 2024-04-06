@@ -3914,7 +3914,8 @@ MonoBehaviour:
   moveSpeed: 3
   target: {fileID: 1254176437}
   colliderPrefab: {fileID: 1897546381643017662, guid: 752656cc425c0ba4aace8bcd78140d84, type: 3}
-  offset: {x: 0, y: 0, z: 10}
+  frontOffset: {x: 0, y: 0, z: 10}
+  backOffset: {x: 0, y: 0, z: 8}
 --- !u!1 &1007862795
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4597,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4074
+  m_Name: pb_Mesh41486
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

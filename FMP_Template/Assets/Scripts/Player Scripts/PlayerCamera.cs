@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
 	[Header("Variables to Change")]
-	[Range(1, 20)] public float moveSpeed; //The speed in which the camera moves
+	public float moveSpeed; //The speed in which the camera moves
 	
 	[Tooltip("This is the end point for the camera, use an empty game object for this!")]
 	public GameObject target; //The end point for the camera

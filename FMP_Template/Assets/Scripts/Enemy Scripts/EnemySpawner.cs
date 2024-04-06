@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-    [Range(1, 10)] public float spawnRate;
+    public float spawnRate;
 
     int enemyCount;
 

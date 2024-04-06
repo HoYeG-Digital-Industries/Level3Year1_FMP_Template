@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Variables you can change")]
-    [Range(1, 10)] public float moveSpeed; //The speed of the player
+    public float moveSpeed; //The speed of the player
     [Tooltip("The player object you want to use, can be 2D or 3D")] public GameObject playerPrefab; //player object
     [Tooltip("if you are using a 2D sprite, tick this box!")] public bool spriteUsed; //bool for if a sprite is being used. 
     

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
-    [Range(1, 100)]
+
     public float playerHealth;
 
     public Slider healthSlider;

@@ -9,7 +9,7 @@ public class BasicEnemy : MonoBehaviour
     [Header("Variables you can change")]
 
     public float enemyHealth; //health of the enemy
-    [Range(1, 50)] public float enemyDamage, attackRange;
+    public float enemyDamage, attackRange;
     [Tooltip("Change the score of the enemy generates")] public int ScoreAmount;
 
     private Transform playerObject;

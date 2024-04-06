@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     Rigidbody rigidbody;
-    [Range(1, 25)] public float bulletSpeed;
-    [Range(1, 50)] public float bulletDamage;
+    public float bulletSpeed;
+    public float bulletDamage;
     // Start is called before the first frame update
     void Start()
     {

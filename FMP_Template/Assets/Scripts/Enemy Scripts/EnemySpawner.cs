@@ -39,8 +39,8 @@ public class EnemySpawner : MonoBehaviour
 
 		for(int i = 0; i < enemyCount; i++)
 		{
-			Instantiate(enemyPrefabs[Random.Range(0, 2)], transform.position, Quaternion.identity);
-			enemyCount++;
+			Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], transform.position, Quaternion.identity);
+			//enemyCount++;
 			yield return new WaitForSeconds(spawnRate);
 		}
 	}

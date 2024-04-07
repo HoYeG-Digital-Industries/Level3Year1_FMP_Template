@@ -162,6 +162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: character_duck
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6fee7ccf72490049b12a2e8674711d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4,24 +4,44 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
-    public float spawnRate;
+	public GameObject[] enemyPrefabs;
+	public float spawnRate;
+	public float spawnDistance;
+	public int enemyCount;
+	GameObject player;
+	bool active = false;
+	bool spawned = false;
 
-    int enemyCount;
+	void Start(){
+		//InvokeRepeating("Spawn", 0.5f, spawnRate);
+		player = GameObject.FindWithTag ("Player");
+	}
+	void Update()
+	{
+		float dist = Vector3.Distance (player.transform.position, transform.position);
+		
+		
+		if (dist < spawnDistance && !spawned)
+		{
+			spawned = true;
+			active = true;
 
-    void Start(){
-        InvokeRepeating("Spawn", 0.5f, spawnRate);
-    }
-    void Update()
-    {
-        if(enemyCount == 5){
-            CancelInvoke();
-        }
-    }
+		}
+		
+		if(active){
+			active = false;
+			StartCoroutine(Spawn());	
+		}
+		
+	}
 
-    void Spawn(){
-        Instantiate(enemyPrefabs[Random.Range(0, 2)], transform.position, Quaternion.identity);
-        enemyCount++;
-    }
-    
+	private IEnumerator Spawn(){
+
+		for(int i = 0; i < enemyCount; i++)
+		{
+			Instantiate(enemyPrefabs[Random.Range(0, 2)], transform.position, Quaternion.identity);
+			enemyCount++;
+			yield return new WaitForSeconds(spawnRate);
+		}
+	}
 }
